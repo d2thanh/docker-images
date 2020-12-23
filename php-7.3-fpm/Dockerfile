@@ -5,15 +5,12 @@ ARG VERSION=7.3
 FROM php:${VERSION}-fpm
 
 #Compile some PHP Module
-#RUN apt-get update && apt-get install -y \
-#		libfreetype6-dev \
-#		libjpeg62-turbo-dev \
-#		libpng-dev \
-#	&& docker-php-ext-configure gd \
-#	&& docker-php-ext-install -j$(nproc) gd
-
-RUN docker-php-ext-configure gd \
-    && docker-php-ext-install -j$(nproc) gd
+RUN apt-get update && apt-get install -y \
+		libfreetype6-dev \
+		libjpeg62-turbo-dev \
+		libpng-dev \
+	&& docker-php-ext-configure gd \
+	&& docker-php-ext-install -j$(nproc) gd
 
 RUN apt-get update && apt-get install -y \
         libmcrypt-dev \
